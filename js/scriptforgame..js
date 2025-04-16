@@ -1042,12 +1042,4 @@ class Game {
 window.addEventListener('load', () => {
     const game = new Game();
     window.game = game;
-
-    console.log(`
-        Sprite Credits:    
-        - Timon: Ripped by MIST OF THE WOLVES
-        - Pumbaa: Ripped by DAYSY OF THE WOLVES
-        - Hyenas: Ripped by MLYS OF THE VOLVES
-        From The Lion King (Sega Genesis)
-    `);
 });
