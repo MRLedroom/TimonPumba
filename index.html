@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тимон и Пумба в саванне</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="start-screen" class="screen">
+            <h1>Тимон и Пумба в саванне</h1>
+            <div id="instructions">
+                <p>Помоги Тимону (или Пумбе) собрать вкусных гусениц!</p>
+                <p>← → - двигаться</p>
+                <p>↑ - прыгать</p>
+                <p>↓ - прятаться</p>
+                <p>Избегай гиен!</p>
+            </div>
+            <div class="character-select">
+                <div class="character-option" data-char="timon">
+                    <img src="/static/img/Timon/Lucky_Shoot_1452244953.png" alt="Тимон">
+                    <p>Тимон</p>
+                </div>
+                <div class="character-option" data-char="pumbaa">
+                    <img src="/static/img/Pumba/7b656bbb6e6ae4ecc10c98c87ce6b9bd.gif" alt="Пумба">
+                    <p>Пумба</p>
+                </div>
+            </div>
+            <input type="text" id="player-name" placeholder="Введите ваше имя">
+            <button id="start-btn" disabled>Начать игру</button>
+        </div>
+
+        <div id="loading-screen" class="screen hidden">
+            <p>Загрузка...</p>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+        </div>
+
+        <div id="cutscene-screen" class="screen hidden">
+            <div class="cutscene-container">
+                <video id="cutscene" src="assets/cutscene.mp4"></video>
+                <p class="skip-hint">Нажмите ПРОБЕЛ чтобы пропустить</p>
+            </div>
+        </div>
+
+        <div id="game-screen" class="screen hidden">
+            <canvas id="game-canvas"></canvas>
+            <div class="hud">
+                <div class="hud-item">
+                    <span class="hud-label">Игрок:</span>
+                    <span id="hud-player-name"></span>
+                </div>
+                <div class="hud-item">
+                    <span class="hud-label">HP:</span>
+                    <div class="health-bar">
+                        <div id="health-bar-fill" class="health-bar-fill"></div>
+                    </div>
+                    <span id="health-value">100</span>
+                </div>
+                <div class="hud-item">
+                    <span class="hud-label">Гусениц:</span>
+                    <span id="caterpillar-count">0</span>
+                </div>
+                <div class="hud-item">
+                    <span class="hud-label">Время:</span>
+                    <span id="game-timer">00:00</span>
+                </div>
+            </div>
+            <div id="pause-screen" class="hidden">
+                <h2>ПАУЗА</h2>
+                <p>Нажмите ESC чтобы продолжить</p>
+            </div>
+        </div>
+
+        <div id="result-screen" class="screen hidden">
+            <h2>Игра завершена!</h2>
+            <div id="result-stats">
+                <p>Ваш результат:</p>
+                <p>Время: <span id="final-time"></span></p>
+                <p>Гусениц собрано: <span id="final-caterpillars"></span></p>
+                <p>Очки: <span id="final-score"></span></p>
+            </div>
+            <div id="leaderboard">
+                <h3>Таблица лидеров</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Место</th>
+                            <th>Имя</th>
+                            <th>Очки</th>
+                            <th>Время</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboard-body">
+                    </tbody>
+                </table>
+            </div>
+            <button id="restart-btn">Играть снова</button>
+        </div>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="/static/sound/41461198_326895439.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="jump-sound">
+        <source src="/static/sound/411c45ceaa06c92.mp3" type="audio/wav">
+    </audio>
+    <audio id="eat-sound">
+        <source src="/static/sound/poedanie-ukus-yabloka.mp3" type="audio/wav">
+    </audio>
+    <audio id="hurt-sound">
+        <source src="/static/sound/002d6756a4b3429.mp3" type="audio/wav">
+    </audio>
+
+    <img src="./static/img/Back/25446463.png" alt="">
+    <script src="/js/scriptforgame..js"></script>
+</body>
+</html>

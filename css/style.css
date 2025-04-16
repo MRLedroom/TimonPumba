@@ -1,0 +1,337 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+body {
+    background-color: #f0f8ff;
+    overflow: hidden;
+}
+
+#game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.screen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #87CEEB;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    transition: opacity 0.5s;
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
+}
+
+/* Стартовый экран */
+#start-screen h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 0 #333;
+    color: #FFD700;
+}
+
+#instructions {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    max-width: 500px;
+}
+
+#instructions p {
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+.character-select {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 20px 0;
+}
+
+.character-option {
+    cursor: pointer;
+    transition: transform 0.3s;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.character-option:hover {
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.character-option.selected {
+    background-color: rgba(255, 215, 0, 0.5);
+    box-shadow: 0 0 10px gold;
+}
+
+.character-option img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+#player-name {
+    padding: 10px 15px;
+    font-size: 1.2rem;
+    margin: 20px 0;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    width: 250px;
+}
+
+#start-btn {
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#start-btn:hover {
+    background-color: #45a049;
+}
+
+#start-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Экран загрузки */
+#loading-screen {
+    background-color: #333;
+}
+
+.progress-bar {
+    width: 300px;
+    height: 30px;
+    background-color: #555;
+    border-radius: 15px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background-color: #4CAF50;
+    transition: width 0.3s;
+}
+
+/* Экран мультика */
+#cutscene-screen {
+    background-color: black;
+}
+
+.cutscene-container {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+}
+
+#cutscene {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.skip-hint {
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    width: 100%;
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+}
+
+/* Игровой экран */
+#game-screen {
+    padding: 0;
+    justify-content: flex-start;
+    background-color: #87CEEB;
+}
+
+#game-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.hud {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    z-index: 100;
+}
+
+.hud-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.hud-label {
+    font-weight: bold;
+    color: #FFD700;
+}
+
+.health-bar {
+    width: 100px;
+    height: 20px;
+    background-color: #555;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.health-bar-fill {
+    height: 100%;
+    width: 100%;
+    background-color: #4CAF50;
+    transition: width 0.3s;
+}
+
+#pause-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+}
+
+#pause-screen h2 {
+    font-size: 3rem;
+    color: #FFD700;
+    margin-bottom: 20px;
+}
+
+/* Экран результатов */
+#result-screen {
+    background-color: #333;
+    overflow-y: auto;
+}
+
+#result-stats {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    width: 80%;
+    max-width: 500px;
+}
+
+#result-stats p {
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+#leaderboard {
+    width: 80%;
+    max-width: 600px;
+    margin: 20px 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#leaderboard h3 {
+    margin-bottom: 15px;
+    color: #FFD700;
+}
+
+#leaderboard table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#leaderboard th, #leaderboard td {
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#leaderboard tr:last-child td {
+    border-bottom: none;
+}
+
+#leaderboard tr.highlight {
+    background-color: rgba(255, 215, 0, 0.2);
+    font-weight: bold;
+}
+
+#restart-btn {
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+#restart-btn:hover {
+    background-color: #45a049;
+}
+
+/* Анимации */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.bounce {
+    animation: bounce 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.pulse {
+    animation: pulse 1s infinite;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.shake {
+    animation: shake 0.5s;
+}
